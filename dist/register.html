@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Legacy - Register</title><script defer="defer" src="app.bundle.js"></script></head><body><main class="main-login-regis"><div class="container-login-regis"><div class="sideCol"></div><div class="profil-login"><img src="images/images-2.png" alt="" class="imground-regis"/></div><div class="loginBox"><h2>Legacy</h2><h1>Join Now!</h1><p class="regis">Please enter your detail</p><form method="post" id="signupForm" class="form-login-regis"><div class="form-group"><label for="email" class="email">Email Address</label> <input type="email" name="email" id="Email" required/></div><div class="form-group"><label for="password" class="password">Password</label> <input type="password" name="password" id="pswd" required/></div><div class="form-group"><label for="confirm_password" class="password">Confirm Password</label> <input type="password" name="confirm_password" id="confirm_password" required/></div><button type="submit" id="signup">Sign Up</button><p id="admit">By creating an acccount, you agree to our <span>Term of Service</span> and <span>Privacy Policy</span></p><p id="Sign">Have an account? <a href="/login.html"><span>Login</span></a></p></form></div></div></main><script>async function handleSignup(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('signupForm');
+            const formData = new FormData(form);
+
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirm_password: formData.get('confirm_password')
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Berhasil membuat akun, silahkan login!');
+                    window.location.href = '/login.html';
+                } else {
+                    const errorData = await response.json();
+                    alert(`Gagal membuat akun: ${errorData.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat membuat akun.');
+            }
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', handleSignup);</script></body></html>

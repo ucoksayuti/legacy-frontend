@@ -1,0 +1,134 @@
+@media screen and (max-width: 1114px) {
+    .hero-text-left {
+        position: absolute;
+        left: 220px;
+        top: 200px;
+    }
+
+    .hero-text-right {
+        position: absolute;
+        right: 160px;
+        top: 300px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1038px) {
+    .hero-text-left {
+        position: absolute;
+        left: 180px;
+        top: 200px;
+    }
+
+    .content {
+        margin: 30px 80px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    
+}
+
+@media screen and (max-width: 974px) {
+    .hero-text-left {
+        position: absolute;
+        left: 140px;
+        top: 200px;
+    }
+
+    .hero-text-right {
+        position: absolute;
+        right: 50px;
+        top: 300px;
+        font-size: 20px;
+    }
+
+    .second-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .third-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+@media screen and (max-width: 882px) {
+    .hero-text-left {
+        position: absolute;
+        left: 100px;
+        top: 160px;
+    }
+
+    .hero-img {
+        width: 400px;
+    }
+
+
+}
+
+@media screen and (max-width: 735px) {
+    .hero-text-left {
+        position: absolute;
+        left: 60px;
+        top: 160px;
+    }
+
+    .hero-text-right {
+        position: absolute;
+        right: 40px;
+        top: 300px;
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (max-width: 652px) {
+    .hero-text-left {
+        position: absolute;
+        left: 60px;
+        top: 160px;
+        font-size: 24px;
+    }
+
+    .hero-img {
+        width: 320px;
+    }
+
+    .card-item {
+        width: 300px;
+        background-color: #1A1A1A;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+}
+
+@media screen and (max-width: 527px) {
+    .hero-text-left {
+        position: absolute;
+        left: 60px;
+        top: 140px;
+        font-size: 16px;
+    }
+
+    .hero-img {
+        width: 240px;
+    }
+
+    .hero-text-right {
+        position: absolute;
+        right: 40px;
+        top: 200px;
+        font-size: 16px;
+    }
+
+}
+
