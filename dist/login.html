@@ -1,36 +1,39 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Legacy - Login</title><script defer="defer" src="app.bundle.js"></script></head><body><main class="main-login-regis"><div class="container-login-regis"><div class="sideCol"><div class="profil-login"><img src="images/images-2.png" alt="Admin Profile" class="imground"/></div></div><div class="loginBox"><h2>Legacy</h2><h1>Welcome Back!</h1><p>Please enter your detail</p><form action="/login" method="post" class="form-login-regis" id="loginForm"><div class="form-group"><label for="email" class="email">Email Address</label> <input type="email" name="email" id="email" required/></div><div class="form-group"><label for="password" class="password">Password</label> <input type="password" name="password" id="password" required/></div><button type="submit">Login</button><p id="admit">By creating an account, you agree to our <span>Terms of Service</span> and <span>Privacy Policy</span></p><p id="Sign">Don’t have an account? <a href="/register.html"><span>Sign Up</span></a></p></form></div></div></main><script>// src/scripts/login.js
 
         async function handleLogin(event) {
-            event.preventDefault();
+    event.preventDefault();
 
-            const form = document.getElementById('loginForm');
-            const formData = new FormData(form);
+    const form = document.getElementById('loginForm');
+    const formData = new FormData(form);
 
-            const data = {
-                email: formData.get('email'),
-                password: formData.get('password')
-            };
+    const data = {
+        email: formData.get('email'),
+        password: formData.get('password')
+    };
 
-            try {
-                const response = await fetch('http://localhost:5000/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
+    try {
+        const response = await fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-                if (response.ok) {
-                    alert('Login berhasil!');
-                    window.location.href = '/index.html'; // Redirect ke halaman dashboard atau halaman utama setelah login
-                } else {
-                    const errorData = await response.json();
-                    alert(`Gagal login: ${errorData.message}`);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat login.');
-            }
+        if (response.ok) {
+            const result = await response.json();
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('email', data.email);
+            alert('Login successful!');
+            window.location.href = '/';
+        } else {
+            const errorData = await response.json();
+            alert(`Login failed: ${errorData.message}`);
         }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while logging in.');
+    }
+}
 
-        document.getElementById('loginForm').addEventListener('submit', handleLogin);</script></body></html>
+document.getElementById('loginForm').addEventListener('submit', handleLogin);</script></body></html>
